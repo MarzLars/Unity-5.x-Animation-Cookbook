@@ -80,7 +80,7 @@ public class SimpleMove : MonoBehaviour {
         /*We use the calculated moveVector to set the Rigidbody velocity. We are not changing
         the Y component, to make the gravitation work. Setting the Rigidbody velocity directly
         gives us more control than using forces and is a better option for characters*/
-        rb.velocity = new Vector3(moveVector.x, rb.velocity.y, moveVector.z);
+        rb.linearVelocity = new Vector3(moveVector.x, rb.linearVelocity.y, moveVector.z);
       
         //We check if our character stands on ground
         if (GroundCheck())
@@ -91,7 +91,7 @@ public class SimpleMove : MonoBehaviour {
                 /*If it's true, we consume the jump flag, alter only the Rigidbody's velocity
                 Y component, and trigger a jump animation (set in the AnimatorController)*/
                 jump = false;
-                rb.velocity = new Vector3(rb.velocity.x, jumpVelocity, rb.velocity.z);
+                rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpVelocity, rb.linearVelocity.z);
                 anim.SetTrigger("Jump");
             }
         }
@@ -101,7 +101,7 @@ public class SimpleMove : MonoBehaviour {
 
         if (anim != null)
         {
-            anim.SetFloat("Speed", rb.velocity.magnitude);
+            anim.SetFloat("Speed", rb.linearVelocity.magnitude);
         }
     }
 

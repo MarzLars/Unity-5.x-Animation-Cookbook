@@ -22,7 +22,7 @@ public class SpawnFracturedObject : MonoBehaviour {
         Rigidbody[] rigidBodies = fracturedObject.GetComponentsInChildren<Rigidbody>();
         for (int i = 0; i < rigidBodies.Length; i++)
         {
-            rigidBodies[i].velocity += lastRigidBodyVelocity;
+            rigidBodies[i].linearVelocity += lastRigidBodyVelocity;
         }
         Destroy(gameObject);
     }
@@ -36,7 +36,7 @@ public class SpawnFracturedObject : MonoBehaviour {
 	void FixedUpdate () {
 
         //We save the last velocity of the main rigid body
-        lastRigidBodyVelocity = rb.velocity;
+        lastRigidBodyVelocity = rb.linearVelocity;
 
 	}
 }
